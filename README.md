@@ -8,28 +8,34 @@ Minimal, no-scroll website for the band Guttered.
 - **Auto dark mode**: Respects system preference (no toggle needed)
 - **Soft aesthetic**: No hard boxes, uses underlines and soft dividers
 - **OKLCH colors**: Modern color space for better perceptual uniformity
-- **Animated background**: Unicorn Studio integration on home page
+- **Animated background**: Unicorn Studio integration (persists across navigation)
+- **SPA routing**: Client-side navigation keeps background loaded
 - **Cursive typography**: "Dawning of a New Day" for headings/logo
 - **Responsive**: Works on mobile and desktop
 - **Zero build**: Pure HTML/CSS, no build step required
 - **Fast**: <50KB page weight (excluding fonts/animations)
 
-## Pages
+## Structure
 
-- `index.html` - Home (next show)
-- `listen.html` - Streaming links
-- `shows.html` - Upcoming shows
-- `contact.html` - Email, social, mailing list
+- `index.html` - Single page application shell
+- `js/router.js` - Client-side router
+- `css/main.css` - All styles
+
+Routes: `/` (home), `/listen`, `/shows`, `/contact`
 
 ## Running Locally
 
-Open `index.html` in a browser, or use a simple server:
+The site uses client-side routing (SPA) to keep the background animation loaded during navigation.
+
+Use a simple server:
 
 ```bash
 python3 -m http.server 8000
 ```
 
 Then visit `http://localhost:8000`
+
+**Note**: For production deployment, ensure your server is configured to serve `index.html` for all routes (see deployment section).
 
 ## Customization
 
@@ -45,25 +51,31 @@ Edit CSS variables in `css/main.css`:
 }
 ```
 
-### Shows
+### Content
 
-Edit `shows.html` to add/remove show listings.
-
-### Streaming Embeds
-
-Replace the placeholder in `listen.html` with actual embed codes from Spotify, Bandcamp, etc.
-
-### Social Links
-
-Update links in `contact.html` with real URLs.
+Edit `js/router.js` to update:
+- Show listings
+- Streaming links
+- Contact info
+- Social links
 
 ## Deployment
 
 Upload all files to any static host:
 
-- Netlify
-- Vercel
-- GitHub Pages
-- Cloudflare Pages
+### Netlify
+Automatically works with the included `_redirects` file.
+
+### Vercel
+Automatically works with the included `vercel.json` file.
+
+### GitHub Pages / Cloudflare Pages
+Add a `404.html` that's a copy of `index.html`:
+```bash
+cp index.html 404.html
+```
+
+### Other Hosts
+Configure your server to serve `index.html` for all routes (SPA routing).
 
 No build step needed.
