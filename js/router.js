@@ -121,7 +121,7 @@ function navigate(route) {
   });
 }
 
-const BASE_PATH = '/guttered';
+const BASE_PATH = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? '' : '/guttered';
 
 function router() {
   const path = window.location.pathname;
@@ -143,7 +143,7 @@ document.addEventListener('click', e => {
   if (isNavLink) {
     e.preventDefault();
     const route = e.target.dataset.route;
-    const path = route === 'home' ? BASE_PATH : `${BASE_PATH}/${route}`;
+    const path = route === 'home' ? (BASE_PATH || '/') : `${BASE_PATH}/${route}`;
     window.history.pushState({}, '', path);
     navigate(route);
     logoContainer.classList.remove('active');

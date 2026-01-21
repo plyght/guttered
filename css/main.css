@@ -99,16 +99,18 @@ body {
   height: 80px;
   width: auto;
   display: block;
-  transition: opacity 0.3s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
   background: oklch(100% 0 0);
   padding: var(--space-3);
   border-radius: 2px;
   position: relative;
   z-index: 52;
+  transform-origin: center center;
 }
 
 .nav-logo-container:hover .nav-logo-img {
-  opacity: 0.9;
+  opacity: 1;
+  transform: scale(0.92);
 }
 
 .nav-dropdown {
@@ -127,7 +129,7 @@ body {
   z-index: 51;
   background: oklch(100% 0 0);
   white-space: nowrap;
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
 }
 
 .nav-logo-container:hover .nav-dropdown,
@@ -154,15 +156,17 @@ body {
   position: absolute;
   text-align: center;
   opacity: 0;
-  transform: translateX(0);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0) scale(0.95);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: blur(4px);
 }
 
 .nav-logo-container:hover .nav-dropdown a:nth-child(1),
 .nav-dropdown:hover a:nth-child(1),
 .nav-logo-container.active .nav-dropdown a:nth-child(1) {
   opacity: 1;
-  transform: translateX(-300px);
+  transform: translateX(-300px) scale(1);
+  filter: blur(0);
   transition-delay: 0.1s;
 }
 
@@ -170,23 +174,26 @@ body {
 .nav-dropdown:hover a:nth-child(2),
 .nav-logo-container.active .nav-dropdown a:nth-child(2) {
   opacity: 1;
-  transform: translateX(-150px);
-  transition-delay: 0.15s;
+  transform: translateX(-150px) scale(1);
+  filter: blur(0);
+  transition-delay: 0.05s;
 }
 
 .nav-logo-container:hover .nav-dropdown a:nth-child(3),
 .nav-dropdown:hover a:nth-child(3),
 .nav-logo-container.active .nav-dropdown a:nth-child(3) {
   opacity: 1;
-  transform: translateX(150px);
-  transition-delay: 0.15s;
+  transform: translateX(150px) scale(1);
+  filter: blur(0);
+  transition-delay: 0.05s;
 }
 
 .nav-logo-container:hover .nav-dropdown a:nth-child(4),
 .nav-dropdown:hover a:nth-child(4),
 .nav-logo-container.active .nav-dropdown a:nth-child(4) {
   opacity: 1;
-  transform: translateX(300px);
+  transform: translateX(300px) scale(1);
+  filter: blur(0);
   transition-delay: 0.1s;
 }
 
