@@ -131,12 +131,27 @@ function router() {
 }
 
 document.addEventListener('click', e => {
-  if (e.target.matches('.nav-link')) {
+  const logoContainer = document.querySelector('.nav-logo-container');
+  const isLogoClick = e.target.closest('.nav-logo-container') === logoContainer;
+  const isNavLink = e.target.matches('.nav-link');
+  
+  if (isLogoClick && !isNavLink) {
+    logoContainer.classList.toggle('active');
+    return;
+  }
+  
+  if (isNavLink) {
     e.preventDefault();
     const route = e.target.dataset.route;
     const path = route === 'home' ? BASE_PATH : `${BASE_PATH}/${route}`;
     window.history.pushState({}, '', path);
     navigate(route);
+    logoContainer.classList.remove('active');
+    return;
+  }
+  
+  if (!isLogoClick) {
+    logoContainer.classList.remove('active');
   }
 });
 

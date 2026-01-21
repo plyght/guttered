@@ -14,35 +14,17 @@
     />
   </head>
   <body>
-    <div class="unicorn-bg">
-      <div
-        data-us-project="jv1cwqOvTTaiPddU9Ifi"
-        style="width: 100%; height: 100vh"
-      ></div>
-      <script type="text/javascript">
-        !(function () {
-          if (!window.UnicornStudio) {
-            window.UnicornStudio = { isInitialized: !1 };
-            var i = document.createElement("script");
-            (i.src =
-              "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.0.2/dist/unicornStudio.umd.js"),
-              (i.onload = function () {
-                window.UnicornStudio.isInitialized ||
-                  (UnicornStudio.init(),
-                  (window.UnicornStudio.isInitialized = !0));
-              }),
-              (document.head || document.body).appendChild(i);
-          }
-        })();
-      </script>
-    </div>
+    <div class="unicorn-bg"></div>
 
-    <nav class="nav nav-home">
-      <div class="nav-links">
-        <a href="/guttered" data-route="home" class="nav-link active">Home</a>
-        <a href="/guttered/listen" data-route="listen" class="nav-link">Listen</a>
-        <a href="/guttered/shows" data-route="shows" class="nav-link">Shows</a>
-        <a href="/guttered/contact" data-route="contact" class="nav-link">Contact</a>
+    <nav class="nav">
+      <div class="nav-logo-container">
+        <img src="assets/logo.svg" alt="Guttered" class="nav-logo-img" />
+        <div class="nav-dropdown">
+          <a href="/guttered" data-route="home" class="nav-link">Home</a>
+          <a href="/guttered/listen" data-route="listen" class="nav-link">Listen</a>
+          <a href="/guttered/shows" data-route="shows" class="nav-link">Shows</a>
+          <a href="/guttered/contact" data-route="contact" class="nav-link">Contact</a>
+        </div>
       </div>
     </nav>
 
