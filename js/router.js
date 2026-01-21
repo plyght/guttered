@@ -121,9 +121,12 @@ function navigate(route) {
   });
 }
 
+const BASE_PATH = '/guttered';
+
 function router() {
   const path = window.location.pathname;
-  const route = path === '/' ? 'home' : path.slice(1);
+  const pathWithoutBase = path.replace(BASE_PATH, '') || '/';
+  const route = pathWithoutBase === '/' ? 'home' : pathWithoutBase.slice(1).replace(/\/$/, '');
   navigate(route);
 }
 
@@ -131,7 +134,7 @@ document.addEventListener('click', e => {
   if (e.target.matches('.nav-link')) {
     e.preventDefault();
     const route = e.target.dataset.route;
-    const path = route === 'home' ? '/' : `/${route}`;
+    const path = route === 'home' ? BASE_PATH : `${BASE_PATH}/${route}`;
     window.history.pushState({}, '', path);
     navigate(route);
   }

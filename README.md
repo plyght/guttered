@@ -61,21 +61,30 @@ Edit `js/router.js` to update:
 
 ## Deployment
 
-Upload all files to any static host:
+This site is configured for GitHub Pages at `plyght.github.io/guttered`.
 
-### Netlify
-Automatically works with the included `_redirects` file.
+### GitHub Pages (Automated)
+The repo includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically deploys to GitHub Pages on every push to `master`.
 
-### Vercel
-Automatically works with the included `vercel.json` file.
+To enable:
+1. Go to repository Settings → Pages
+2. Set Source to "GitHub Actions"
+3. Push to master branch - deployment is automatic
 
-### GitHub Pages / Cloudflare Pages
-Add a `404.html` that's a copy of `index.html`:
-```bash
-cp index.html 404.html
-```
+The `404.html` file enables SPA routing on GitHub Pages.
 
 ### Other Hosts
+
+#### Netlify
+Automatically works with the included `_redirects` file.
+
+#### Vercel
+Automatically works with the included `vercel.json` file.
+
+#### Cloudflare Pages
+The included `404.html` enables SPA routing.
+
+#### Other Hosts
 Configure your server to serve `index.html` for all routes (SPA routing).
 
 No build step needed.
